@@ -1,6 +1,7 @@
 export enum GrafanaThemeType {
   Light = 'light',
   Dark = 'dark',
+  Custom = 'custom',
 }
 
 export interface GrafanaThemeCommons {

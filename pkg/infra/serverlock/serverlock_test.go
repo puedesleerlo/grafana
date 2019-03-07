@@ -4,8 +4,8 @@ import (
 	"context"
 	"testing"
 
-	"github.com/grafana/grafana/pkg/log"
-	"github.com/grafana/grafana/pkg/services/sqlstore"
+	"github.com/puedesleerlo/grafana/pkg/log"
+	"github.com/puedesleerlo/grafana/pkg/services/sqlstore"
 	. "github.com/smartystreets/goconvey/convey"
 )
 

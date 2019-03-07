@@ -6,13 +6,13 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/grafana/grafana/pkg/bus"
-	"github.com/grafana/grafana/pkg/components/apikeygen"
-	"github.com/grafana/grafana/pkg/log"
-	m "github.com/grafana/grafana/pkg/models"
-	"github.com/grafana/grafana/pkg/services/session"
-	"github.com/grafana/grafana/pkg/setting"
-	"github.com/grafana/grafana/pkg/util"
+	"github.com/puedesleerlo/grafana/pkg/bus"
+	"github.com/puedesleerlo/grafana/pkg/components/apikeygen"
+	"github.com/puedesleerlo/grafana/pkg/log"
+	m "github.com/puedesleerlo/grafana/pkg/models"
+	"github.com/puedesleerlo/grafana/pkg/services/session"
+	"github.com/puedesleerlo/grafana/pkg/setting"
+	"github.com/puedesleerlo/grafana/pkg/util"
 	macaron "gopkg.in/macaron.v1"
 )
 

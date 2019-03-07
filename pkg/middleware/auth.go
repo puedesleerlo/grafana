@@ -6,9 +6,9 @@ import (
 
 	"gopkg.in/macaron.v1"
 
-	m "github.com/grafana/grafana/pkg/models"
-	"github.com/grafana/grafana/pkg/setting"
-	"github.com/grafana/grafana/pkg/util"
+	m "github.com/puedesleerlo/grafana/pkg/models"
+	"github.com/puedesleerlo/grafana/pkg/setting"
+	"github.com/puedesleerlo/grafana/pkg/util"
 )
 
 type AuthOptions struct {

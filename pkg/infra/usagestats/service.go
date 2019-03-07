@@ -4,13 +4,13 @@ import (
 	"context"
 	"time"
 
-	"github.com/grafana/grafana/pkg/bus"
-	"github.com/grafana/grafana/pkg/login/social"
-	"github.com/grafana/grafana/pkg/services/sqlstore"
+	"github.com/puedesleerlo/grafana/pkg/bus"
+	"github.com/puedesleerlo/grafana/pkg/login/social"
+	"github.com/puedesleerlo/grafana/pkg/services/sqlstore"
 
-	"github.com/grafana/grafana/pkg/log"
-	"github.com/grafana/grafana/pkg/registry"
-	"github.com/grafana/grafana/pkg/setting"
+	"github.com/puedesleerlo/grafana/pkg/log"
+	"github.com/puedesleerlo/grafana/pkg/registry"
+	"github.com/puedesleerlo/grafana/pkg/setting"
 )
 
 var metricsLogger log.Logger = log.New("metrics")

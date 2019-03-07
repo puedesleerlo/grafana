@@ -1,9 +1,9 @@
 package api
 
 import (
-	"github.com/grafana/grafana/pkg/bus"
-	m "github.com/grafana/grafana/pkg/models"
-	"github.com/grafana/grafana/pkg/setting"
+	"github.com/puedesleerlo/grafana/pkg/bus"
+	m "github.com/puedesleerlo/grafana/pkg/models"
+	"github.com/puedesleerlo/grafana/pkg/setting"
 )
 
 func GetOrgQuotas(c *m.ReqContext) Response {

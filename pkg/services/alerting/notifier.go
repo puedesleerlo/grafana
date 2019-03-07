@@ -5,14 +5,14 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/grafana/grafana/pkg/bus"
-	"github.com/grafana/grafana/pkg/components/imguploader"
-	"github.com/grafana/grafana/pkg/infra/metrics"
-	"github.com/grafana/grafana/pkg/log"
-	"github.com/grafana/grafana/pkg/services/rendering"
-	"github.com/grafana/grafana/pkg/setting"
+	"github.com/puedesleerlo/grafana/pkg/bus"
+	"github.com/puedesleerlo/grafana/pkg/components/imguploader"
+	"github.com/puedesleerlo/grafana/pkg/infra/metrics"
+	"github.com/puedesleerlo/grafana/pkg/log"
+	"github.com/puedesleerlo/grafana/pkg/services/rendering"
+	"github.com/puedesleerlo/grafana/pkg/setting"
 
-	m "github.com/grafana/grafana/pkg/models"
+	m "github.com/puedesleerlo/grafana/pkg/models"
 )
 
 type NotifierPlugin struct {

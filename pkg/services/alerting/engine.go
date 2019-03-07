@@ -10,10 +10,10 @@ import (
 	tlog "github.com/opentracing/opentracing-go/log"
 
 	"github.com/benbjohnson/clock"
-	"github.com/grafana/grafana/pkg/log"
-	"github.com/grafana/grafana/pkg/registry"
-	"github.com/grafana/grafana/pkg/services/rendering"
-	"github.com/grafana/grafana/pkg/setting"
+	"github.com/puedesleerlo/grafana/pkg/log"
+	"github.com/puedesleerlo/grafana/pkg/registry"
+	"github.com/puedesleerlo/grafana/pkg/services/rendering"
+	"github.com/puedesleerlo/grafana/pkg/setting"
 	"golang.org/x/sync/errgroup"
 )
 

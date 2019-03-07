@@ -1,6 +1,6 @@
 package notifiers
 
-import "github.com/grafana/grafana/pkg/components/simplejson"
+import "github.com/puedesleerlo/grafana/pkg/components/simplejson"
 
 type notificationsAsConfig struct {
 	Notifications       []*notificationFromConfig   `json:"notifiers" yaml:"notifiers"`

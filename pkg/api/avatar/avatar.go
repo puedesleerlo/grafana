@@ -22,8 +22,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/grafana/grafana/pkg/log"
-	"github.com/grafana/grafana/pkg/setting"
+	"github.com/puedesleerlo/grafana/pkg/log"
+	"github.com/puedesleerlo/grafana/pkg/setting"
 	"gopkg.in/macaron.v1"
 
 	gocache "github.com/patrickmn/go-cache"

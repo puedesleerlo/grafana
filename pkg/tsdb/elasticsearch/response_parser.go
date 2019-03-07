@@ -7,10 +7,10 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/grafana/grafana/pkg/components/null"
-	"github.com/grafana/grafana/pkg/components/simplejson"
-	"github.com/grafana/grafana/pkg/tsdb"
-	"github.com/grafana/grafana/pkg/tsdb/elasticsearch/client"
+	"github.com/puedesleerlo/grafana/pkg/components/null"
+	"github.com/puedesleerlo/grafana/pkg/components/simplejson"
+	"github.com/puedesleerlo/grafana/pkg/tsdb"
+	"github.com/puedesleerlo/grafana/pkg/tsdb/elasticsearch/client"
 )
 
 const (

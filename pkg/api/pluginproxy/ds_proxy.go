@@ -15,11 +15,11 @@ import (
 
 	"github.com/opentracing/opentracing-go"
 
-	"github.com/grafana/grafana/pkg/log"
-	m "github.com/grafana/grafana/pkg/models"
-	"github.com/grafana/grafana/pkg/plugins"
-	"github.com/grafana/grafana/pkg/setting"
-	"github.com/grafana/grafana/pkg/util"
+	"github.com/puedesleerlo/grafana/pkg/log"
+	m "github.com/puedesleerlo/grafana/pkg/models"
+	"github.com/puedesleerlo/grafana/pkg/plugins"
+	"github.com/puedesleerlo/grafana/pkg/setting"
+	"github.com/puedesleerlo/grafana/pkg/util"
 )
 
 var (

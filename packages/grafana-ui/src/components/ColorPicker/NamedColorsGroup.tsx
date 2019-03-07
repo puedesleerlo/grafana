@@ -35,6 +35,7 @@ export const ColorSwatch: FunctionComponent<ColorSwatchProps> = ({
     {
       light: theme.colors.white,
       dark: theme.colors.black,
+      custom: theme.colors.white,
     },
     theme.type
   );

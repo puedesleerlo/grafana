@@ -7,7 +7,7 @@ import (
 
 	"regexp"
 
-	"github.com/grafana/grafana/pkg/tsdb"
+	"github.com/puedesleerlo/grafana/pkg/tsdb"
 )
 
 var (

@@ -8,11 +8,11 @@ import (
 	"time"
 
 	"github.com/grafana/grafana-plugin-model/go/datasource"
-	"github.com/grafana/grafana/pkg/log"
-	"github.com/grafana/grafana/pkg/models"
-	"github.com/grafana/grafana/pkg/plugins/datasource/wrapper"
-	"github.com/grafana/grafana/pkg/tsdb"
 	plugin "github.com/hashicorp/go-plugin"
+	"github.com/puedesleerlo/grafana/pkg/log"
+	"github.com/puedesleerlo/grafana/pkg/models"
+	"github.com/puedesleerlo/grafana/pkg/plugins/datasource/wrapper"
+	"github.com/puedesleerlo/grafana/pkg/tsdb"
 )
 
 // DataSourcePlugin contains all metadata about a datasource plugin

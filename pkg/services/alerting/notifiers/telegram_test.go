@@ -4,9 +4,9 @@ import (
 	"context"
 	"testing"
 
-	"github.com/grafana/grafana/pkg/components/simplejson"
-	m "github.com/grafana/grafana/pkg/models"
-	"github.com/grafana/grafana/pkg/services/alerting"
+	"github.com/puedesleerlo/grafana/pkg/components/simplejson"
+	m "github.com/puedesleerlo/grafana/pkg/models"
+	"github.com/puedesleerlo/grafana/pkg/services/alerting"
 	. "github.com/smartystreets/goconvey/convey"
 )
 

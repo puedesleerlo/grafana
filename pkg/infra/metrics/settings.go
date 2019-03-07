@@ -5,9 +5,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/grafana/grafana/pkg/infra/metrics/graphitebridge"
-	"github.com/grafana/grafana/pkg/setting"
 	"github.com/prometheus/client_golang/prometheus"
+	"github.com/puedesleerlo/grafana/pkg/infra/metrics/graphitebridge"
+	"github.com/puedesleerlo/grafana/pkg/setting"
 )
 
 func (im *InternalMetricsService) readSettings() error {

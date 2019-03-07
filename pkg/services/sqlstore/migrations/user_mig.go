@@ -4,8 +4,8 @@ import (
 	"fmt"
 
 	"github.com/go-xorm/xorm"
-	. "github.com/grafana/grafana/pkg/services/sqlstore/migrator"
-	"github.com/grafana/grafana/pkg/util"
+	. "github.com/puedesleerlo/grafana/pkg/services/sqlstore/migrator"
+	"github.com/puedesleerlo/grafana/pkg/util"
 )
 
 func addUserMigrations(mg *Migrator) {

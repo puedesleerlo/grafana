@@ -8,8 +8,8 @@ import (
 	"time"
 
 	pluginModel "github.com/grafana/grafana-plugin-model/go/renderer"
-	"github.com/grafana/grafana/pkg/plugins"
 	plugin "github.com/hashicorp/go-plugin"
+	"github.com/puedesleerlo/grafana/pkg/plugins"
 )
 
 func (rs *RenderingService) startPlugin(ctx context.Context) error {

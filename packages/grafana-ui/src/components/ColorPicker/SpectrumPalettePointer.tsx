@@ -19,6 +19,7 @@ const SpectrumPalettePointer: React.FunctionComponent<SpectrumPalettePointerProp
     {
       light: theme.colors.dark3,
       dark: theme.colors.gray2,
+      custom: theme.colors.gray2,
     },
     theme.type
   );

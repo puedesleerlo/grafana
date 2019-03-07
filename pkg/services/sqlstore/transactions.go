@@ -4,9 +4,9 @@ import (
 	"context"
 	"time"
 
-	"github.com/grafana/grafana/pkg/bus"
-	"github.com/grafana/grafana/pkg/log"
 	sqlite3 "github.com/mattn/go-sqlite3"
+	"github.com/puedesleerlo/grafana/pkg/bus"
+	"github.com/puedesleerlo/grafana/pkg/log"
 )
 
 func (ss *SqlStore) InTransaction(ctx context.Context, fn func(ctx context.Context) error) error {

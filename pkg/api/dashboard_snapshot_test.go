@@ -7,9 +7,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/grafana/grafana/pkg/bus"
-	"github.com/grafana/grafana/pkg/components/simplejson"
-	m "github.com/grafana/grafana/pkg/models"
+	"github.com/puedesleerlo/grafana/pkg/bus"
+	"github.com/puedesleerlo/grafana/pkg/components/simplejson"
+	m "github.com/puedesleerlo/grafana/pkg/models"
 
 	. "github.com/smartystreets/goconvey/convey"
 )

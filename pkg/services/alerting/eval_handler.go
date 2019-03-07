@@ -5,8 +5,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/grafana/grafana/pkg/infra/metrics"
-	"github.com/grafana/grafana/pkg/log"
+	"github.com/puedesleerlo/grafana/pkg/infra/metrics"
+	"github.com/puedesleerlo/grafana/pkg/log"
 )
 
 type DefaultEvalHandler struct {
