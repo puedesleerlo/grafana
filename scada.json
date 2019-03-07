@@ -1,0 +1,407 @@
+{
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": "-- Grafana --",
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "gnetId": null,
+    "graphTooltip": 0,
+    "id": 1,
+    "iteration": 1551983147311,
+    "links": [],
+    "panels": [
+      {
+        "content": "<html>\r\n  <head>\r\n    <title>Simple Map</title>\r\n    <meta name=\"viewport\" content=\"initial-scale=1.0\">\r\n    <meta charset=\"utf-8\">\r\n    <link href=\"https://fonts.googleapis.com/css?family=Roboto\" rel=\"stylesheet\">\r\n    <style>\r\n      /* Always set the map height explicitly to define the size of the div\r\n       * element that contains the map. */\r\n       body {\r\n         background-color: black;\r\n       }\r\n      #wrapper { position: relative; font-family: 'Roboto', sans-serif; }\r\n      .panel {\r\n        background-color:transparent; border-radius: 10px; opacity: 0.8; padding: 5%;\r\n        font-weight: bold; font-size: 1vw; color: black;\r\n      }\r\n      .verde {\r\n        color: green;\r\n      }\r\n      .panel h1{font-size: 1.1vw; color: black; font-weight: bold;}\r\n      .panel .legend-icon {\r\n        width: 1vw;\r\n        height: 1vw;\r\n        border: 2px solid white;\r\n        display: inline-block;\r\n        transform: rotate(45deg);\r\n        margin-right: 5%;\r\n      }\r\n      #grid1 {\r\n        position: absolute;\r\n        grid-row-gap: 6%;\r\n        grid-column-gap: 0;\r\n        display: grid;\r\n        grid-template-columns: repeat(2, 1fr);\r\n        grid-template-rows: 1fr 1fr 2px 1fr;\r\n        grid-template-areas: \r\n        'ramal1 erp'\r\n        'ramal2 erp'\r\n        '. erp'\r\n        'critico3 erp';\r\n        width: 33%;\r\n        top: 48%;\r\n        left: 35%;\r\n      }\r\n      #grid2 {\r\n        position: absolute;\r\n        top: 9%;\r\n        left: 13%;\r\n        grid-column-gap: 12%;\r\n        grid-row-gap: 19%;\r\n        display: grid;\r\n        grid-template-columns: repeat(2, 1fr);\r\n        grid-template-rows: repeat(2, 1fr);\r\n        grid-template-areas: \r\n        'critico2 circuito'\r\n        'critico1 circuito';\r\n        width: 36%;\r\n      }\r\n      #critico1 {\r\n        grid-area: critico1;\r\n      }\r\n      #critico2 {\r\n        grid-area: critico2;\r\n      }\r\n      #circuito {\r\n        grid-area: circuito;\r\n      }\r\n      #planta {\r\n        position: absolute;\r\n        left: 81%;\r\n        top: 31%;\r\n        width: 18%;\r\n\r\n      }\r\n\r\n      .content-grid {\r\n        display: grid;\r\n        grid-auto-flow: row;\r\n        grid-row-gap: 4%;\r\n      /* grid-auto-columns: 200px; */\r\n      }\r\n      #erp { grid-area: erp}\r\n      #ramal1 {grid-area: ramal1}\r\n      #ramal2 {grid-area: ramal2}\r\n      #critico3 {grid-area: critico3}\r\n      #map {\r\n        height: 100%;\r\n      }\r\n      /* Optional: Makes the sample page fill the window. */\r\n      html, body {\r\n        height: 100%;\r\n        margin: 0;\r\n        padding: 0;\r\n      }\r\n    </style>\r\n  </head>\r\n  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/core.js\"></script>\r\n  <script>\r\n    $(document).ready(function(){\r\n      var cc = ${cc:json}\r\n      $(\".ph-cc\").html(parseFloat(cc[0]).toFixed(2));\r\n      $(\".cloro-cc\").html(parseFloat(cc[1]).toFixed(2));\r\n      $(\".presion-cc\").html(Math.max(0, parseFloat(cc[2])).toFixed(2));\r\n      $(\".gabinete-cc\").html(parseFloat(cc[3]) == 0 ? \"Cerrado\":\"Abierto\");\r\n\r\n      var planta = ${planta:json}\r\n      $('.caudal_in-planta').html(parseFloat(planta[0]).toFixed(2)); \r\n      $('.volumen_in-planta').html(parseFloat(planta[1])); \r\n      $('.presion_in-planta').html(Math.max(0, parseFloat(planta[2])).toFixed(2)); \r\n      $('.turbidez_in-planta').html(parseFloat(planta[3]).toFixed(2)); \r\n      $('.nivel_t1-planta').html(parseFloat(planta[4]).toFixed(2)); \r\n      $('.nivel_t2-planta').html(parseFloat(planta[5]).toFixed(2)); \r\n      $('.horquilla_t1-planta').html(planta[6]== 0 ? \"Normal\":\"Anormal\"); \r\n      $('.caudal_out-planta').html(parseFloat(planta[7]).toFixed(2)); \r\n      $('.volumen_out-planta').html(parseFloat(planta[8])); \r\n      $('.pH_out-planta').html(parseFloat(planta[9]).toFixed(2)); \r\n      $('.cloro_out-planta').html(parseFloat(planta[10]).toFixed(2)); \r\n      $('.turbidez_out-planta').html(parseFloat(planta[11]).toFixed(2)); \r\n      $('.temperaturaAmb-planta').html(parseFloat(planta[12]).toFixed(2)); \r\n      $('.caudalPTAP-planta').html(parseFloat(planta[13]).toFixed(2)); \r\n\r\n      $('.presion-puntocritico1').html(Math.max(0, parseFloat($presion_puntocritico1)).toFixed(2)); \r\n      $('.presion-puntocritico2').html(Math.max(0, parseFloat($presion_puntocritico2)).toFixed(2));\r\n      $('.presion-puntocritico3').html(Math.max(0, parseFloat($presion_puntocritico3)).toFixed(2)); \r\n      \r\n      var erp = ${erp:json}\r\n      $('.caudal-erp').html(parseFloat(erp[0]).toFixed(2));\r\n      $('.volumen-erp').html(parseFloat(erp[1]));\r\n      $('.presionbp-erp').html(Math.max(0, parseFloat(erp[2])).toFixed(2));\r\n      $('.presionin-erp').html(Math.max(0, parseFloat(erp[3])).toFixed(2));\r\n      $('.presionvrp-erp').html(Math.max(0, parseFloat(erp[4])).toFixed(2));\r\n      $('.energia-erp').html(parseFloat($energia_erp) == 0 ? \"Ok\": \"Fallando\");\r\n      $('.gabinete-erp').html(parseFloat($gabinete_erp)  == 0 ? \"Cerrado\":\"Abierto\");\r\n      $('.tapa-erp').html(parseFloat($tapa_erp)  == 1 ? \"Cerrada\":\"Abierta\");\r\n      $('.horquilla-erp').html(parseFloat($horquilla_erp) == 1 ? \"Con líquido\":\"Sin líquido\");\r\n\r\n      var ramal1 = ${ramal1:json}\r\n      $('.caudal-ramal1').html(parseFloat(ramal1[0]).toFixed(2));\r\n      $('.volumen-ramal1').html(parseFloat(ramal1[1]));\r\n\r\n      var ramal2 = ${ramal2:json}\r\n      $('.caudal-ramal2').html(parseFloat(ramal2[0]).toFixed(2));\r\n      $('.volumen-ramal2').html(parseFloat(ramal2[1]));\r\n\r\n    });\r\n  </script>\r\n  <body>\r\n      <div id=\"wrapper\">\r\n        \r\n          <!-- <div>\r\n            <img src='https://maps.googleapis.com/maps/api/staticmap?\r\n            center=6.594953,-75.795832\r\n            &zoom=15.5&size=720x640\r\n            &maptype=satellite&markers=color:blue%7Clabel:S%7C6.593056,-75.795832\r\n            &markers=color:red%7Clabel:S%7C6.599325,-75.784289\r\n            &markers=color:red%7Clabel:S%7C6.598056,-75.795\r\n            &key=AIzaSyDqHmRjTHbc3wTdni6_hv7cjUm61-x48oE' width=\"1200px\" alt=\"\">\r\n          </div> -->\r\n          <div>\r\n            <img width=\"100%\" src=\"./public/img/scada2.png\">\r\n          </div>\r\n          <div id=\"grid1\">\r\n            <div class=\"panel\" id=\"erp\">\r\n              <h1> <div class=\"legend-icon\" style=\"background-color: rgb(255, 255, 51);\"></div>ERP</h1>\r\n              \r\n              <div class=\"content-grid\">\r\n                <span>Caudal: <span class=\"caudal-erp\"></span> l/s</span>\r\n                <span>Volumen: <span class=\"volumen-erp\"></span> m<sup>3</sup></span>\r\n                <span>Presión Bypass: <span class=\"presionbp-erp\"></span> mca</span>\r\n                <span>Presión Entrada: <span class=\"presionin-erp\"></span> mca</span>\r\n                <span>Presión In VRP: <span class=\"presionvrp-erp\"></span> mca</span>\r\n                <span>Energía: <span class=\"energia-erp verde\"></span> </span>\r\n                <span>Gabinete: <span class=\"gabinete-erp verde\"></span></span>\r\n                <span>Tapa: <span class=\"tapa-erp\"></span></span>\r\n                <span>Horquilla: <span class=\"horquilla-erp\"></span></span>\r\n              </div>\r\n               \r\n           </div>\r\n           <div class=\"panel\" id=\"ramal1\">\r\n             <h1> <div class=\"legend-icon\" style=\"background-color: rgb(0, 153, 0);\"></div>Ramal 1</h1>\r\n             <div class=\"content-grid\">\r\n              <span>Caudal: <span class=\"caudal-ramal1\"> </span> l/s</span>\r\n                <span>Volumen: <span class=\"volumen-ramal1\"></span> m<sup>3</sup></span>\r\n            </div>\r\n              \r\n          </div>\r\n          <div class=\"panel\" id=\"ramal2\">\r\n            <h1> <div class=\"legend-icon\" style=\"background-color: rgb(51, 0, 101);\"></div>Ramal 2</h1>\r\n            <div class=\"content-grid\">\r\n              <span>Caudal: <span class=\"caudal-ramal2\"></span> l/s</span>\r\n                <span>Volumen: <span class=\"volumen-ramal2\"></span> m<sup>3</sup></span>\r\n            </div>\r\n         </div>\r\n          <div class=\"panel\" id=\"critico3\">\r\n            <h1><div class=\"legend-icon\" style=\"background-color: rgb(52, 248, 52)\"></div>Punto crítico 3</h1>\r\n            <div class=\"content-grid\">\r\n                <span>Presión: <span class=\"presion-puntocritico3\"></span> mca</span>\r\n            </div>\r\n          </div>\r\n          \r\n          </div>\r\n          <div id=\"grid2\">\r\n            <div class=\"panel\" id=\"critico1\">\r\n              <h1><div class=\"legend-icon\" style=\"background-color:rgb(0, 102, 255);\"></div>Punto crítico <sub>Cancha</sub></h1>\r\n            <div class=\"content-grid\">\r\n                <span>Presión: <span class=\"presion-puntocritico1\"></span> mca</span>\r\n            </div>\r\n            </div>\r\n            <div class=\"panel\" id=\"critico2\">\r\n              <h1><div class=\"legend-icon\" style=\"background-color:rgb(254, 101, 0)\"></div>Punto crítico <sub>B. Nuevo</sub></h1>\r\n            <div class=\"content-grid\">\r\n                <span>Presión: <span class=\"presion-puntocritico2\"></span> mca</span>\r\n            </div>\r\n            </div>\r\n            <div class=\"panel\" id=\"circuito\">\r\n              <h1><div class=\"legend-icon\" style=\"background-color: rgb(253, 0, 2);\"></div>Cola de Circuito</h1>\r\n            <div class=\"content-grid\">\r\n              <span>Ph: <span class=\"ph-cc\"></span></span>\r\n                <span>Cloro: <span class=\"cloro-cc\"></span> mg/l</span>\r\n              <span>Presión: <span class=\"presion-cc\"></span> mca</span>\r\n                <span>Gabinete: <span class=\"gabinete-cc verde\"></span></span>\r\n            </div>\r\n            </div>\r\n          </div>\r\n          <div id=\"planta\">\r\n            <div class=\"panel\">\r\n                <h1><div class=\"legend-icon\" style=\"background-color: rgb(254, 0, 253);\"></div>Planta de tratamiento</h1>\r\n                <div class=\"content-grid\">\r\n                  <span>Caudal captado: <span class=\"caudal_in-planta\"></span> l/s</span>\r\n                  <span>Volumen Entrada: <span class=\"volumen_in-planta\"></span> m<sup>3</sup></span>\r\n                  <span>Presión Entrada: <span class=\"presion_in-planta\"></span> mca</span>\r\n                    <span>Turbidez Entrada: <span class=\"turbidez_in-planta verde\"></span> NTU</span>\r\n                    <span>Nivel Tanque 1: <span class=\"nivel_t1-planta\"></span> m</span>\r\n                    <span>Nivel Tanque 2: <span class=\"nivel_t2-planta\"></span> m</span>\r\n                    <span>Rebose Tanque 2: <span class=\"horquilla_t1-planta\"></span></span>\r\n                    <span>Caudal Salida:  <span class=\"caudal_out-planta\"></span> l/s</span>\r\n                    <span>Volumen Salida: <span class=\"volumen_out-planta\"></span> m<sup>3</sup></span>\r\n                    <span>pH Salida: <span class=\"pH_out-planta verde\"></span> </span>\r\n                    <span>Cloro Salida: <span class=\"cloro_out-planta verde\"></span> mg/l</span>\r\n                    <span>Turbiedad Salida: <span class=\"turbidez_out-planta verde\"></span> NTU</span>\r\n                    <span>Temperatura Amb:  <span class=\"temperaturaAmb-planta\"></span> ºC</span>\r\n                    <span>Caudal PTAP:  <span class=\"caudalPTAP-planta\"></span> l/s</span>\r\n                     \r\n                </div>\r\n            </div>\r\n          </div>\r\n      </div>\r\n  </body>\r\n</html>",
+        "gridPos": {
+          "h": 19,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 2,
+        "links": [],
+        "mode": "html",
+        "targets": [
+          {
+            "format": "time_series",
+            "group": [],
+            "metricColumn": "none",
+            "rawQuery": false,
+            "refId": "A",
+            "select": [
+              [
+                {
+                  "params": [
+                    "value"
+                  ],
+                  "type": "column"
+                }
+              ]
+            ],
+            "timeColumn": "time",
+            "where": [
+              {
+                "name": "$__timeFilter",
+                "params": [],
+                "type": "macro"
+              }
+            ]
+          }
+        ],
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Panel Title",
+        "type": "text"
+      }
+    ],
+    "refresh": "1m",
+    "schemaVersion": 18,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+      "list": [
+        {
+          "allValue": null,
+          "current": {
+            "text": "47.7968",
+            "value": "47.7968"
+          },
+          "datasource": "MySQL",
+          "definition": "select presion_mca from epmsucre.puntocritico1 where fechaserver > curdate() order by fechaserver desc limit 1",
+          "hide": 2,
+          "includeAll": false,
+          "label": "Presión Crítico 1",
+          "multi": false,
+          "name": "presion_puntocritico1",
+          "options": [],
+          "query": "select presion_mca from epmsucre.puntocritico1 where fechaserver > curdate() order by fechaserver desc limit 1",
+          "refresh": 2,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "tagValuesQuery": "",
+          "tags": [],
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        },
+        {
+          "allValue": null,
+          "current": {
+            "text": "2.59878",
+            "value": "2.59878"
+          },
+          "datasource": "MySQL",
+          "definition": "select presion_mca from epmsucre.puntocritico2 where fechaserver > curdate() order by fechaserver desc limit 1",
+          "hide": 2,
+          "includeAll": false,
+          "label": "Presión Crítico 2",
+          "multi": false,
+          "name": "presion_puntocritico2",
+          "options": [],
+          "query": "select presion_mca from epmsucre.puntocritico2 where fechaserver > curdate() order by fechaserver desc limit 1",
+          "refresh": 2,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "tagValuesQuery": "",
+          "tags": [],
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        },
+        {
+          "allValue": null,
+          "current": {
+            "text": "22.0946",
+            "value": "22.0946"
+          },
+          "datasource": "MySQL",
+          "definition": "select presion_mca from epmsucre.puntocritico3 where fechaserver > curdate() order by fechaserver desc limit 1",
+          "hide": 2,
+          "includeAll": false,
+          "label": "Presión Crítico 3",
+          "multi": false,
+          "name": "presion_puntocritico3",
+          "options": [],
+          "query": "select presion_mca from epmsucre.puntocritico3 where fechaserver > curdate() order by fechaserver desc limit 1",
+          "refresh": 2,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "tagValuesQuery": "",
+          "tags": [],
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        },
+        {
+          "allValue": null,
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
+          "datasource": "MySQL",
+          "definition": "select ph, cl, presion_mca, aperturaGab from epmsucre.colacircuito where fechaserver > curdate() order by fechaserver desc limit 1",
+          "hide": 2,
+          "includeAll": true,
+          "label": "Cola Circuito",
+          "multi": true,
+          "name": "cc",
+          "options": [],
+          "query": "select ph, cl, presion_mca, aperturaGab from epmsucre.colacircuito where fechaserver > curdate() order by fechaserver desc limit 1",
+          "refresh": 2,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "tagValuesQuery": "",
+          "tags": [],
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        },
+        {
+          "allValue": null,
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
+          "datasource": "MySQL",
+          "definition": "select caudal_in,  caudal_total,  presion_in, turbidez_in, nivel_t1, nivel_t2, horquilla_t1, caudal_out, caudal_total_out, ph_out, cloro_out, turbidez_out, tempAmbiente, caudalPTAP from epmsucre.plantatratamiento where fechaserver > curdate() order by fechaserver desc limit 1",
+          "hide": 2,
+          "includeAll": true,
+          "label": "Planta Tratamiento",
+          "multi": true,
+          "name": "planta",
+          "options": [],
+          "query": "select caudal_in,  caudal_total,  presion_in, turbidez_in, nivel_t1, nivel_t2, horquilla_t1, caudal_out, caudal_total_out, ph_out, cloro_out, turbidez_out, tempAmbiente, caudalPTAP from epmsucre.plantatratamiento where fechaserver > curdate() order by fechaserver desc limit 1",
+          "refresh": 2,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "tagValuesQuery": "",
+          "tags": [],
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        },
+        {
+          "allValue": null,
+          "current": {
+            "text": "1",
+            "value": "1"
+          },
+          "datasource": "MySQL",
+          "definition": "select ultrasonico from epmsucre.estacionreguladora where fechaserver > curdate() order by fechaserver desc limit 1",
+          "hide": 2,
+          "includeAll": false,
+          "label": "Tapa ERP",
+          "multi": true,
+          "name": "tapa_erp",
+          "options": [],
+          "query": "select ultrasonico from epmsucre.estacionreguladora where fechaserver > curdate() order by fechaserver desc limit 1",
+          "refresh": 2,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "tagValuesQuery": "",
+          "tags": [],
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        },
+        {
+          "allValue": null,
+          "current": {
+            "text": "0",
+            "value": "0"
+          },
+          "datasource": "MySQL",
+          "definition": "select deteccionApertura from epmsucre.estacionreguladora where fechaserver > curdate() order by fechaserver desc limit 1",
+          "hide": 2,
+          "includeAll": false,
+          "label": "Tapa ERP",
+          "multi": true,
+          "name": "gabinete_erp",
+          "options": [],
+          "query": "select deteccionApertura from epmsucre.estacionreguladora where fechaserver > curdate() order by fechaserver desc limit 1",
+          "refresh": 2,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "tagValuesQuery": "",
+          "tags": [],
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        },
+        {
+          "allValue": null,
+          "current": {
+            "text": "0",
+            "value": "0"
+          },
+          "datasource": "MySQL",
+          "definition": "select fallaEnergia from epmsucre.estacionreguladora where fechaserver > curdate() order by fechaserver desc limit 1",
+          "hide": 2,
+          "includeAll": false,
+          "label": "Energia ERP",
+          "multi": true,
+          "name": "energia_erp",
+          "options": [],
+          "query": "select fallaEnergia from epmsucre.estacionreguladora where fechaserver > curdate() order by fechaserver desc limit 1",
+          "refresh": 2,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "tagValuesQuery": "",
+          "tags": [],
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        },
+        {
+          "allValue": null,
+          "current": {
+            "text": "0",
+            "value": "0"
+          },
+          "datasource": "MySQL",
+          "definition": "select horquilla from epmsucre.estacionreguladora where fechaserver > curdate() order by fechaserver desc limit 1",
+          "hide": 2,
+          "includeAll": false,
+          "label": "Horquilla Erp",
+          "multi": true,
+          "name": "horquilla_erp",
+          "options": [],
+          "query": "select horquilla from epmsucre.estacionreguladora where fechaserver > curdate() order by fechaserver desc limit 1",
+          "refresh": 2,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "tagValuesQuery": "",
+          "tags": [],
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        },
+        {
+          "allValue": null,
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
+          "datasource": "MySQL",
+          "definition": "select caudal_erp, caudal_total_erp, presion_bp_mca, presion_in_filtro_mca, presion_in_vrp_mca from epmsucre.estacionreguladora where fechaserver > curdate() order by fechaserver desc limit 1",
+          "hide": 2,
+          "includeAll": true,
+          "label": "ERP",
+          "multi": true,
+          "name": "erp",
+          "options": [],
+          "query": "select caudal_erp,  caudal_total_erp, presion_bp_mca, presion_in_filtro_mca, presion_in_vrp_mca from epmsucre.estacionreguladora where fechaserver > curdate() order by fechaserver desc limit 1",
+          "refresh": 2,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "tagValuesQuery": "",
+          "tags": [],
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        },
+        {
+          "allValue": null,
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
+          "datasource": "MySQL",
+          "definition": "select caudal_r1, caudal_total_r1  from epmsucre.estacionreguladora where fechaserver > curdate() order by fechaserver desc limit 1",
+          "hide": 2,
+          "includeAll": true,
+          "label": "Ramal 1",
+          "multi": true,
+          "name": "ramal1",
+          "options": [],
+          "query": "select caudal_r1, caudal_total_r1  from epmsucre.estacionreguladora where fechaserver > curdate() order by fechaserver desc limit 1",
+          "refresh": 2,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "tagValuesQuery": "",
+          "tags": [],
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        },
+        {
+          "allValue": null,
+          "current": {
+            "text": "All",
+            "value": "$__all"
+          },
+          "datasource": "MySQL",
+          "definition": "select caudal_r2, caudal_total_r2  from epmsucre.estacionreguladora where fechaserver > curdate() order by fechaserver desc limit 1",
+          "hide": 2,
+          "includeAll": true,
+          "label": "Ramal 2",
+          "multi": true,
+          "name": "ramal2",
+          "options": [],
+          "query": "select caudal_r2, caudal_total_r2  from epmsucre.estacionreguladora where fechaserver > curdate() order by fechaserver desc limit 1",
+          "refresh": 2,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "tagValuesQuery": "",
+          "tags": [],
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        }
+      ]
+    },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {
+      "refresh_intervals": [
+        "5s",
+        "10s",
+        "30s",
+        "1m",
+        "5m",
+        "15m",
+        "30m",
+        "1h",
+        "2h",
+        "1d"
+      ],
+      "time_options": [
+        "5m",
+        "15m",
+        "1h",
+        "6h",
+        "12h",
+        "24h",
+        "2d",
+        "7d",
+        "30d"
+      ]
+    },
+    "timezone": "",
+    "title": "Scada",
+    "uid": "THqvFdCmk",
+    "version": 58
+}

@@ -6,7 +6,7 @@ const lightThemeMock = {
   color: {
     red: '#ff0000',
     green: '#00ff00',
-    black: '#000000'
+    black: '#000000',
   },
 };
 
@@ -14,14 +14,14 @@ const darkThemeMock = {
   color: {
     red: '#ff0000',
     green: '#00ff00',
-    black: '#000000'
+    black: '#000000',
   },
 };
 const customThemeMock = {
   color: {
     red: '#ff0000',
     green: '#00ff00',
-    black: '#000000'
+    black: '#000000',
   },
 };
 
@@ -39,7 +39,7 @@ describe('Theme variable variant selector', () => {
       {
         dark: theme.color.red,
         light: theme.color.green,
-        custom: theme.color.black
+        custom: theme.color.black,
       },
       GrafanaThemeType.Light
     );
@@ -53,7 +53,7 @@ describe('Theme variable variant selector', () => {
     const selectedValue = selectThemeVariant({
       dark: theme.color.red,
       light: theme.color.green,
-      custom: theme.color.black
+      custom: theme.color.black,
     });
 
     expect(selectedValue).toBe(lightThemeMock.color.red);

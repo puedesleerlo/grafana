@@ -233,7 +233,7 @@ $navbar-button-border: $gray-4;
 
 // Sidemenu
 // -------------------------
-$side-menu-bg: $dark-1;
+$side-menu-bg: ${theme.colors.blueBase};
 $side-menu-bg-mobile: rgba(0, 0, 0, 0); //$gray-6;
 $side-menu-item-hover-bg: $gray-1;
 $side-menu-shadow: 5px 0px 10px -5px $gray-1;
@@ -380,4 +380,5 @@ $button-toggle-group-btn-seperator-border: 1px solid $gray-6;
 $vertical-resize-handle-bg: $gray-4;
 $vertical-resize-handle-dots: $gray-3;
 $vertical-resize-handle-dots-hover: $gray-2;
+
 `;
