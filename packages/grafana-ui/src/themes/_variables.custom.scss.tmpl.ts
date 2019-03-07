@@ -186,7 +186,7 @@ $input-box-shadow: none;
 $input-border-focus: $gray-5 !default;
 $input-box-shadow-focus: $blue-light !default;
 $input-color-placeholder: $gray-4 !default;
-$input-label-bg: $gray-5;
+$input-label-bg: $green-base;
 $input-label-border-color: $gray-5;
 $input-color-select-arrow: $gray-1;
 
@@ -233,7 +233,7 @@ $navbar-button-border: $gray-4;
 
 // Sidemenu
 // -------------------------
-$side-menu-bg: ${theme.colors.blueBase};
+$side-menu-bg: ${theme.colors.greenBase};
 $side-menu-bg-mobile: rgba(0, 0, 0, 0); //$gray-6;
 $side-menu-item-hover-bg: $gray-1;
 $side-menu-shadow: 5px 0px 10px -5px $gray-1;

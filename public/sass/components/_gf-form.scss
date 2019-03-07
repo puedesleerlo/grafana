@@ -103,7 +103,7 @@ $input-border: 1px solid $input-border-color;
   flex-shrink: 0;
   font-weight: $font-weight-semi-bold;
   font-size: $font-size-sm;
-
+  color: $white !important;
   background-color: $input-label-bg;
   display: block;
   height: $gf-form-input-height;

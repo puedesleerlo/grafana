@@ -6,7 +6,7 @@ $login-border: #8daac5;
   background-repeat: no-repeat;
   min-width: 100%;
   margin-left: 0;
-  background-color: $side-menu-bg;
+  background-color: $white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,7 +18,7 @@ $login-border: #8daac5;
   }
 
   & .btn-primary {
-    @include buttonBackground(#ff6600, #bc3e06);
+    @include buttonBackground(#DDDC25, #51ad32);
   }
 }
 
@@ -54,7 +54,7 @@ select:-webkit-autofill:focus {
   border: 1px solid $login-border;
   border-radius: 4px;
   opacity: 0.6;
-  background: $black;
+  background: #575756;
   color: #fbfbfb;
 
   &:focus {

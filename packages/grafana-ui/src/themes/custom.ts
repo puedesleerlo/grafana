@@ -3,7 +3,6 @@ import defaultTheme from './default';
 import { GrafanaTheme, GrafanaThemeType } from '../types/theme';
 
 const basicColors = {
-  blueTelemetrik: '#2d91bf',
   black: '#000000',
   white: '#ffffff',
   dark1: '#1e2028',
@@ -30,7 +29,7 @@ const basicColors = {
   blueFaint: '#f5f9ff',
   redBase: '#e02f44',
   redShade: '#c4162a',
-  greenBase: '#3eb15b',
+  greenBase: '#51AD32',
   greenShade: '#369b4f',
   blue: '#0083b3',
   red: '#d44939',
